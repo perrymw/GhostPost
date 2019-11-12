@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponseRedirect, reverse, HttpResponse, redirect
+from django.shortcuts import render,HttpResponseRedirect, reverse, HttpResponse
 from django.utils import timezone
 from ghost_post.models import BoastandRoast
 from ghost_post.forms import PostForm
@@ -13,7 +13,6 @@ def upvote(request, id):
     post.total += 1
     post.save()
     return HttpResponseRedirect(reverse('homepage'))
-    # have the url tell where to go 
 
 
 def downvote(request, id):
@@ -25,7 +24,6 @@ def downvote(request, id):
     post.total -= 1
     post.save()
     return HttpResponseRedirect(reverse('homepage'))
-    # have the url tell where to go 
 
 
 def index(request):
@@ -39,15 +37,12 @@ def boasts_view(request):
     html = "index.html"
     data = BoastandRoast.objects.filter(boast=True).order_by('-date')
     return render(request, html, {"data": data})
-    
+
 
 def roasts_view(request):
     html = "index.html"
-    data = BoastandRoast.objects.filter(boast=False)
+    data = BoastandRoast.objects.filter(boast=False).order_by('-date')
     return render(request, html, {"data": data})
-    
-
-
 
 
 def addpost(request):
