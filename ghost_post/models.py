@@ -14,7 +14,6 @@ class BoastandRoast(models.Model):
     upordown = models.IntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
     total = models.IntegerField(default=0)
-    prideorhide = models.BooleanField(default=True)
 
     def __str__(self):
         return f"{self.content}"

@@ -15,19 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from ghost_post import views
+from django.conf.urls import url, include
+
+from rest_framework import routers
 from ghost_post.models import BoastandRoast
+from ghost_post.views import PostView
+
+router = routers.DefaultRouter()
+router.register(r'post',PostView )
 
 admin.site.register(BoastandRoast)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('upvote/<int:id>', views.upvote, name='homepage'),
-    path('downvote/<int:id>', views.downvote, name='homepage'),
-    path('post/', views.addpost, name='post'),
-    path('boast/', views.boasts_view, name='homepage'),
-    path('roast/', views.roasts_view, name='homepage'),
-    path('hated/', views.hated_view, name='homepage'),
-    path('loved/', views.lovely_view, name='homepage'),
-    path('', views.index, name='homepage'),
+    url(r'^', include(router.urls))
 ]
