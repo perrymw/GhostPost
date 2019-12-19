@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
+from . import views
 
 from rest_framework import routers
 from ghost_post.models import BoastandRoast
@@ -28,5 +29,7 @@ admin.site.register(BoastandRoast)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('csrf/', views.csrf),
+    path('ping/', views.ping),
     url(r'^', include(router.urls))
 ]
