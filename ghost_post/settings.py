@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ghost_post',
-    'rest_framework'
+    'rest_framework',
     'corsheaders',
 ]
 # add here
@@ -55,9 +55,9 @@ MIDDLEWARE = [
 
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ORIGIN_WHITELIST = ['localhost:3000']
+CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
 
-CSRF_TRUSTED_ORIGINS = ['localhost:3000']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000']
 
 ROOT_URLCONF = 'ghost_post.urls'
 

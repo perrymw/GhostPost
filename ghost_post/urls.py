@@ -29,7 +29,5 @@ admin.site.register(BoastandRoast)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('csrf/', views.csrf),
-    path('ping/', views.ping),
     url(r'^', include(router.urls))
 ]

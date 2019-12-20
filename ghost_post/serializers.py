@@ -5,6 +5,7 @@ class BoastandRoastSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = BoastandRoast
         fields = [
+            'id',
             'boast',
             'content',
             'date',
