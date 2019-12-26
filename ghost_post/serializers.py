@@ -9,5 +9,7 @@ class BoastandRoastSerializer(HyperlinkedModelSerializer):
             'boast',
             'content',
             'date',
+            'upvote',
+            'downvote',
             'total'
         ]

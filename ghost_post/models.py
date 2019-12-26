@@ -11,7 +11,8 @@ from django.utils import timezone
 class BoastandRoast(models.Model):
     boast = models.BooleanField(default=True)
     content = models.TextField()
-    upordown = models.IntegerField(default=0)
+    upvote = models.IntegerField(default=0)
+    downvote = models.IntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
     total = models.IntegerField(default=0)
 

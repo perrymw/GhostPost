@@ -25,20 +25,20 @@ class PostView(viewsets.ModelViewSet):
 
     @action(detail=False)
     def highest_to_lowest(self, request):
-        queryset= BoastandRoast.objects.order_by('-total')
+        queryset= BoastandRoast.objects.order_by('downvote')
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
     @action(detail=False)
     def lowest_to_highest(self, request):
-        queryset= BoastandRoast.objects.order_by('total')
+        queryset= BoastandRoast.objects.order_by('upvote')
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
     @action(detail=True, methods=['get'])
     def upvotes(self, request, pk=None):
         post = self.get_object()
-        post.upordown += 1
+        post.upvote += 1
         post.total += 1
         post.save()
         return Response({'status': 'upvote'})
@@ -46,7 +46,7 @@ class PostView(viewsets.ModelViewSet):
     @action(detail=True, methods=['get'])
     def downvotes(self, request, pk=None):
         post = self.get_object()
-        post.upordown -= 1
+        post.downvote -= 1
         post.total -= 1
         post.save()
         return Response({'status': 'downvote'})
