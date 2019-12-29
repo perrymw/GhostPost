@@ -35,6 +35,19 @@ class PostView(viewsets.ModelViewSet):
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
+    @action(detail=False)
+    def least_recent(self, request):
+        queryset= BoastandRoast.objects.order_by('date')
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False)
+
+    def most_recent(self, request):
+        queryset= BoastandRoast.objects.order_by('-date')
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
     @action(detail=True, methods=['get'])
     def upvotes(self, request, pk=None):
         post = self.get_object()
